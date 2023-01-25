@@ -55,8 +55,6 @@ plt.xlabel('x')
 plt.ylabel('y')
 ax.set_zlabel('z')
 
-# try adding b0 to w
-
 # multiline text that is compatible with LaTeX:
 # https://stackoverflow.com/a/37930579/7799311
 params = f'$R^2 = {round(Rsq, 3)}$'
