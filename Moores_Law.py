@@ -64,7 +64,7 @@ plt.ylabel('Number of transistors')
 
 # multiline text that is compatible with LaTeX:
 # https://stackoverflow.com/a/37930579/7799311
-params = f'$a = {round(a, 2)}$\n' + f'$b = {round(b, 2)}$\n' + f'$R^2 = {round(Rsq, 2)}$'
+params = f'$a = {round(a, 3)}$\n' + f'$b = {round(b, 3)}$\n' + f'$R^2 = {round(Rsq, 3)}$'
 plt.text(1970, 10**9, params, bbox={'facecolor': 'blue', 'alpha': 0.2})
 
 plt.show()

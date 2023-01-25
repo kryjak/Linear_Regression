@@ -20,7 +20,7 @@ b = (np.mean(Y)*np.mean(X**2) - np.mean(X)*np.mean(X*Y))/denom
 # https://stackoverflow.com/questions/40034993/how-to-get-element-wise-matrix-multiplication-hadamard-product-in-numpy
 
 def Yhat(x):
-    return a*X + b  # best-fit line
+    return a*x + b  # best-fit line
 
 SSres = np.sum((Y - Yhat(X)) ** 2)
 SStot = np.sum((Y - np.mean(Y)) ** 2)
