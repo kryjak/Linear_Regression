@@ -17,6 +17,7 @@ https://numpy.org/doc/stable/reference/
 """
 
 import numpy as np
+
 a = np.array([1, 2, 3])  # defining an array
 print(a)
 
@@ -171,3 +172,56 @@ print(test)
 print(test[2:4, :2])
 print(test[[0, 1, 2, 3], [1, 2, 3, 4]])
 print(test[[0, 4, 5], 3:])
+
+print("BROADCASTING".center(50, "-"))
+"""
+https://numpy.org/doc/stable/user/basics.broadcasting.html
+Numpy has the ability to perform operations on arrays that have different dimensions.
+It does that by 'stretching, or 'broadcasting' the smaller array onto the shape of the larger one, where possible.
+For example, in:
+>>> a = np.array([1.0, 2.0, 3.0])
+>>> b = 2.0
+>>> a * b
+the scalar b is assumed to be broadcast into an array of length 3.
+In general, numpy compares the dimensions starting on the right, i.e. the deepest one. Dimensions are compatible if:
+1. they are equal
+2. one of them is 1
+
+Note that two arrays don't even have to have the same number of dimensions. The missing dimensions are interpreted as 1.
+"""
+
+a = np.array([0.0, 10.0, 20.0, 30.0])
+b = np.array([1.0, 2.0, 3.0])  # (1, 3)
+a = a[:, np.newaxis]  # newaxis inserts a new axis at the specified index
+print(a)  # (4, 1)
+print(a + b)
+# a gets stretched horizontally, i.e. 2 more copies of the column are created
+# b gets stretched vertically, i.e. 3 more copies of the row are created
+
+
+exit()
+
+print("UNDERSTANDING AXES".center(50, "-"))
+a = np.arange(24).reshape(2,3,4)
+# if you're struggling to understand which axis we're considering, look at the [ ] brackets.
+# The outermost [ ] is the array itself.
+# Then the next level of [ ] denotes different elements of axis=0. In this case, the first element along axis=0 is:
+# >>> a[0]
+# [[ 0  1  2  3]
+#   [ 4  5  6  7]
+#   [ 8  9 10 11]]
+# The next level is axis=1. The first element along this axis is:
+# >>> a[0][0]
+# [ 0  1  2  3]
+# This continues inwards, until we reach the deepest axis, whose elements do not individually have [ ]:
+# >>> a[0][0][0]
+# 0
+
+# https://numpy.org/devdocs/reference/generated/numpy.apply_over_axes.html
+# https://numpy.org/devdocs/reference/generated/numpy.apply_over_axis.html  # note different order of arguments...
+print("-".center(10, "-"))
+print(np.apply_over_axes(np.sum, a, 0))
+print("-".center(10, "-"))
+print(np.apply_over_axes(np.sum, a, 1))
+print("-".center(10, "-"))
+print(np.apply_over_axes(np.sum, a, 2))
