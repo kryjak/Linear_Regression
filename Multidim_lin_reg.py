@@ -44,8 +44,22 @@ grid = np.reshape(np.transpose([xs, ys]), (50, 50, 2))
 
 # calculate Y values by mapping over each point on the grid
 # add 1 onto each [x, y] pair to account for the constant term b0
+
+# my original solution
 zs = np.array([[Yhat(np.concatenate(([1], ii))) for ii in row] for row in grid])
-print(np.shape(zs))
+
+# this also works
+# xseval = [[np.concatenate(([1], ii)) for ii in row] for row in grid]
+# zs = np.apply_along_axis(Yhat, 2, xseval)  # 2 is the 3rd axis
+
+# this also works pt2
+# xseval = np.ones((50, 50, 3))
+# xseval[:, :, 1:] = grid
+# zs = np.apply_along_axis(Yhat, 2, xseval)  # 2 is the 3rd axis
+
+# xseval = np.concatenate(([1], grid))  # doesn't work - broadcasting only understands simple arithmetic operations:
+# print(np.shape(np.array([1]) +  grid))  # this gives [i+1, j+1] for each point
+# np.apply_along_axis(np.concatenate(([1], #)), 2, grid)  # something like Mathematica's slot???
 
 ax.scatter(Xmat[:, 1], Xmat[:, 2], Y, color='red')
 ax.plot_surface(xs, ys, zs, alpha=0.5)
