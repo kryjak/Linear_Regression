@@ -143,6 +143,7 @@ print('mean:', np.mean(stat))
 print('median:', np.median(stat))
 
 print("REORGANISING".center(20, "-"))
+print(stat)
 # https://numpy.org/doc/stable/reference/routines.array-manipulation.html
 print('reshape:\n', stat.reshape((3, 2)))
 print('reshape2:\n', stat.reshape((3, 2, 1)))
