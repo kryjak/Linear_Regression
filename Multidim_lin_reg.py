@@ -1,3 +1,8 @@
+"""
+Sample data for multiple linear regression can be found at:
+https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/mlr/frames/frame.html
+"""
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt

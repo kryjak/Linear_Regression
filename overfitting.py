@@ -35,7 +35,6 @@ def fit(X, Y):
 def fit_and_display(X, Y, sample, deg):
     """Solve the polynomial regression model based on samples from the full data set."""
     # get the training set
-    sda
     Xtrain = X[train_idx]
     Ytrain = Y[train_idx]
 
@@ -132,4 +131,3 @@ if __name__ == "__main__":
 # we can see that the effectiveness of the model depends a lot on the samples that were drawn from the data set
 # the model goes crazy in areas where there are no sample points
 # from this reason, it is important to collect a lot of data so that we can get a representative sample
-
